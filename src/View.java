@@ -8,6 +8,11 @@ public class View {
     private Controller controller;
     private String version;
 
+    public void init(Controller controller, String version) {
+        this.controller = controller;
+        this.version = version;
+    }
+
     public void mainWindow() {
         JFrame frame = new JFrame("Personal Calendar");
         JPanel panel = new JPanel(new BorderLayout(5, 5));
@@ -37,7 +42,7 @@ public class View {
         button1.setBorder(new Border() {
             @Override
             public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-                g.drawRoundRect(x, y, width - 1, height - 1, 16, 16);
+                g.drawRoundRect(x, y, width-1, height-1, 16, 16);
             }
 
             @Override
@@ -80,17 +85,20 @@ public class View {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
+    public void subWindow1() {
+
+    }
+
+    public void subWindow2() {
+
+    }
+
     public void subWindow3() {
         String message = "<html><font size=+2><center>Personal Calendar</center></font><br>";
         message += "<center>" + version + "</center><br>";
         message += "This is an open source software, released under the MIT License.<br>";
         message += "More information: https://github.com/yuwen41200/personal-calendar</html>";
         JOptionPane.showMessageDialog(null, message, "About", JOptionPane.PLAIN_MESSAGE);
-    }
-
-    public void init(Controller controller, String version) {
-        this.controller = controller;
-        this.version = version;
     }
 
 }
