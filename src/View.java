@@ -5,10 +5,12 @@ import java.util.*;
 
 public class View {
 
+    private Model model;
     private Controller controller;
     private String version;
 
-    public void init(Controller controller, String version) {
+    public void init(Model model, Controller controller, String version) {
+        this.model = model;
         this.controller = controller;
         this.version = version;
     }
@@ -25,8 +27,10 @@ public class View {
         int todayDate = calendar.get(Calendar.DAY_OF_MONTH);
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 7; j++) {
+                String output = "<html>" + (todayMonth+1) + "/" + todayDate + "<br><br>";
+                output += model.fetchDatabase(calendar) + "</html>";
                 datePanels[i][j] = new JPanel(new FlowLayout(FlowLayout.LEFT));
-                dateLabels[i][j] = new JLabel((todayMonth+1) + "/" + todayDate);
+                dateLabels[i][j] = new JLabel(output);
                 dateLabels[i][j].setFont(new Font(Font.SERIF, Font.BOLD, 16));
                 datePanels[i][j].setPreferredSize(new Dimension(150, 150));
                 datePanels[i][j].setBackground(new Color(255, 219, 184));

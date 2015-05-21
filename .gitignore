@@ -2,8 +2,8 @@
 .idea/
 *.iml
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+# Password File
+passwd
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# Virtual Machine Crash Logs
 hs_err_pid*
