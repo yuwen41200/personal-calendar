@@ -42,6 +42,7 @@ public class LibMysqlConnector {
             message += "\nSQLState: " + exception.getSQLState();
             message += "\nVendorError: " + exception.getErrorCode();
             JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
+            System.exit(1);
         }
 
         return connection;
