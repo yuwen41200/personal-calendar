@@ -10,7 +10,7 @@ public class Model {
 
     public void init(String username) {
         LibMysqlConnector libMysqlConnector = new LibMysqlConnector();
-        connection = libMysqlConnector.getConnection();
+        this.connection = libMysqlConnector.getConnection();
         this.table = "user_" + username;
     }
 
@@ -21,6 +21,7 @@ public class Model {
         String query = "SELECT * FROM " + table;
         query += " WHERE date = \'" + simpleDateFormat.format(calendar.getTime()) + "\'";
         String output = "";
+
         try {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
@@ -28,19 +29,21 @@ public class Model {
                 output += resultSet.getString("event") + "<br>";
             }
         }
+
         catch (SQLException exception) {
             String message = "SQLException: " + exception.getMessage();
             message += "\nSQLState: " + exception.getSQLState();
             message += "\nVendorError: " + exception.getErrorCode();
             JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
         }
+
         finally {
             if (resultSet != null) {
                 try {
                     resultSet.close();
                 }
                 catch (SQLException exception) {
-                    String message = "Unbelievable error.";
+                    String message = "Close result set failed.";
                     JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
@@ -49,11 +52,12 @@ public class Model {
                     statement.close();
                 }
                 catch (SQLException exception) {
-                    String message = "Unbelievable error.";
+                    String message = "Close statement failed.";
                     JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
+
         return output;
     }
 
