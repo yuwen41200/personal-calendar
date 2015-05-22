@@ -14,19 +14,19 @@ public class Model {
         this.table = "user_" + username;
     }
 
-    public String fetchDatabase(Calendar calendar) {
+    public ArrayList<String> fetchDatabase(Calendar calendar) {
         Statement statement = null;
         ResultSet resultSet = null;
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String query = "SELECT * FROM " + table;
         query += " WHERE date = \'" + simpleDateFormat.format(calendar.getTime()) + "\'";
-        String output = "";
+        ArrayList<String> results = new ArrayList<>();
 
         try {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-                output += resultSet.getString("event") + "<br>";
+                results.add(resultSet.getString("event"));
             }
         }
 
@@ -58,7 +58,7 @@ public class Model {
             }
         }
 
-        return output;
+        return results;
     }
 
 }
