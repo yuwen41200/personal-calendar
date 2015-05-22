@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.event.*;
 import java.util.*;
 
@@ -21,7 +22,7 @@ public class Controller extends MouseAdapter implements ActionListener {
     public void mouseClicked(MouseEvent event) {
         if (event.getSource() instanceof JDatePanel) {
             JDatePanel datePanel = (JDatePanel) event.getSource();
-            view.subWindow1(datePanel.getDate());
+            view.subWindow1(datePanel.getCalendar());
         }
     }
 
@@ -31,24 +32,50 @@ public class Controller extends MouseAdapter implements ActionListener {
             calendar.add(Calendar.DATE, -7);
             view.mainWindow(calendar);
         }
+
         else if (event.getActionCommand().equals("Move Forward")) {
             calendar.add(Calendar.DATE, 7);
             view.mainWindow(calendar);
         }
+
         else if (event.getActionCommand().equals("Integrate Google Calendar")) {
+            model.fetchGoogleCalendar();
             view.subWindow2();
         }
+
         else if (event.getActionCommand().equals("About")) {
             view.subWindow3();
         }
-        else if (event.getActionCommand().equals("Add Event")) {
-            // do sth
+
+        else if (event.getActionCommand().contains("Add Event")) {
+            String message = "New event: ";
+            String input = JOptionPane.showInputDialog(null, message, "Add Event", JOptionPane.PLAIN_MESSAGE);
+
+            String[] command = event.getActionCommand().split(" ");
+            model.insertDatabase(command[2], input);
+            view.subWindow1(model.strToCalendar(command[2]));
         }
-        else if (event.getActionCommand().equals("Modify Event")) {
-            // do sth
+
+        else if (event.getActionCommand().contains("Modify Event")) {
+            String message = "Edit event: ";
+            String input = JOptionPane.showInputDialog(null, message, "Modify Event", JOptionPane.PLAIN_MESSAGE);
+
+            String[] command = event.getActionCommand().split(" ");
+            String id = model.sequenceDatabase(command[2], command[3]);
+            model.updateDatabase(id, input);
+            view.subWindow1(model.strToCalendar(command[2]));
         }
-        else if (event.getActionCommand().equals("Remove Event")) {
-            // do sth
+
+        else if (event.getActionCommand().contains("Remove Event")) {
+            String message = "Delete the event permanently?";
+            int input = JOptionPane.showConfirmDialog(null, message, "Remove Event", JOptionPane.YES_NO_OPTION);
+
+            if (input == JOptionPane.YES_OPTION) {
+                String[] command = event.getActionCommand().split(" ");
+                String id = model.sequenceDatabase(command[2], command[3]);
+                model.deleteDatabase(id);
+                view.subWindow1(model.strToCalendar(command[2]));
+            }
         }
     }
 

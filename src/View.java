@@ -100,6 +100,7 @@ public class View {
         subFrame1 = new JFrame("View Daily Schedule");
         ArrayList<String> results = model.fetchDatabase(calendar);
         int resultCount = (results.size() > 2) ? results.size() : 2;
+        String date = model.calendarToStr(calendar);
 
         JPanel panel = new JPanel(new BorderLayout(5, 5));
         JPanel leftPanel = new JPanel(new GridLayout(resultCount, 1, 5, 5));
@@ -113,12 +114,12 @@ public class View {
         for (String result : results) {
             eventButtons1[i] = new JButton("<html><b><i>&#x2713;</i></b></html>");
             eventButtons1[i].setToolTipText("Remove Event");
-            eventButtons1[i].setActionCommand("Remove Event");
+            eventButtons1[i].setActionCommand("Remove Event " + date + " " + i);
             eventButtons1[i].addActionListener(controller);
 
             eventButtons2[i] = new JButton("<html><b><i>=</i></b></html>");
             eventButtons2[i].setToolTipText("Modify Event");
-            eventButtons2[i].setActionCommand("Modify Event");
+            eventButtons2[i].setActionCommand("Modify Event " + date + " " + i);
             eventButtons2[i].addActionListener(controller);
 
             eventLabels[i] = new JLabel(result);
@@ -143,7 +144,7 @@ public class View {
         JButton button = new JButton("<html><b><i>+</i></b></html>");
         button.setBorder(new RoundedBorder());
         button.setToolTipText("Add Event");
-        button.setActionCommand("Add Event");
+        button.setActionCommand("Add Event " + date);
         button.addActionListener(controller);
 
         leftPanel.add(label);
@@ -161,7 +162,8 @@ public class View {
     }
 
     public void subWindow2() {
-
+        String message = "Load Google Calendar succeeded.";
+        JOptionPane.showMessageDialog(null, message, "Info", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public void subWindow3() {
@@ -184,7 +186,7 @@ class JDatePanel extends JPanel {
         this.calendar = calendar;
     }
 
-    public Calendar getDate() {
+    public Calendar getCalendar() {
         return calendar;
     }
 

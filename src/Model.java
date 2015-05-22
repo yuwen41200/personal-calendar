@@ -17,9 +17,8 @@ public class Model {
     public ArrayList<String> fetchDatabase(Calendar calendar) {
         Statement statement = null;
         ResultSet resultSet = null;
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String query = "SELECT * FROM " + table;
-        query += " WHERE date = \'" + simpleDateFormat.format(calendar.getTime()) + "\'";
+        query += " WHERE date = \'" + calendarToStr(calendar) + "\'";
         ArrayList<String> results = new ArrayList<>();
 
         try {
@@ -59,6 +58,41 @@ public class Model {
         }
 
         return results;
+    }
+
+    public void insertDatabase(String date, String event) {
+
+    }
+
+    public void updateDatabase(String id, String event) {
+
+    }
+
+    public void deleteDatabase(String id) {
+
+    }
+
+    public String sequenceDatabase(String date, String count) {
+        String id;
+
+        return "-1";
+    }
+
+    public void fetchGoogleCalendar() {
+
+    }
+
+    public String calendarToStr(Calendar calendar) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return simpleDateFormat.format(calendar.getTime());
+    }
+
+    public Calendar strToCalendar(String date) {
+        String[] strDate = date.split("-");
+        int[] intDate = new int[3];
+        for (int i = 0; i < 3; i++)
+            intDate[i] = Integer.parseInt(strDate[i]);
+        return new Calendar.Builder().setDate(intDate[0], intDate[1], intDate[2]).build();
     }
 
 }
