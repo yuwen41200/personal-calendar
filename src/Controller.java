@@ -12,6 +12,9 @@ public class Controller extends MouseAdapter implements ActionListener {
         this.model = model;
         this.view = view;
         this.calendar = Calendar.getInstance();
+        int displacement = - calendar.get(Calendar.DAY_OF_WEEK) + 2;
+        displacement = (displacement == 1) ? -6 : displacement;
+        calendar.add(Calendar.DATE, displacement);
     }
 
     public void run() {
@@ -54,6 +57,7 @@ public class Controller extends MouseAdapter implements ActionListener {
             if (input != null && !input.equals("")) {
                 String[] commands = event.getActionCommand().split(" ");
                 model.insertDatabase(commands[2], input);
+                view.mainWindow(calendar);
                 view.subWindow1(model.strToCalendar(commands[2]));
             }
         }
@@ -66,6 +70,7 @@ public class Controller extends MouseAdapter implements ActionListener {
                 String[] commands = event.getActionCommand().split(" ");
                 String id = model.sequenceDatabase(commands[2], commands[3]);
                 model.updateDatabase(id, input);
+                view.mainWindow(calendar);
                 view.subWindow1(model.strToCalendar(commands[2]));
             }
         }
@@ -78,6 +83,7 @@ public class Controller extends MouseAdapter implements ActionListener {
                 String[] commands = event.getActionCommand().split(" ");
                 String id = model.sequenceDatabase(commands[2], commands[3]);
                 model.deleteDatabase(id);
+                view.mainWindow(calendar);
                 view.subWindow1(model.strToCalendar(commands[2]));
             }
         }

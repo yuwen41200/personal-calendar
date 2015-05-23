@@ -27,10 +27,12 @@ public class View {
 
         int todayMonth = calendar.get(Calendar.MONTH);
         int todayDate = calendar.get(Calendar.DAY_OF_MONTH);
+        String todayDay = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.getDefault());
 
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 7; j++) {
-                String output = "<html><b>" + (todayMonth+1) + "/" + todayDate + "</b><br><br>";
+                String output = "<html><b>" + (todayMonth+1) + "/" + todayDate;
+                output += " " + todayDay + "</b><br><br>";
                 ArrayList<String> results = model.fetchDatabase(calendar);
                 for (String result : results)
                     output += result + "<br>";
@@ -50,6 +52,7 @@ public class View {
                 calendar.add(Calendar.DATE, 1);
                 todayMonth = calendar.get(Calendar.MONTH);
                 todayDate = calendar.get(Calendar.DAY_OF_MONTH);
+                todayDay = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.getDefault());
             }
         }
 
