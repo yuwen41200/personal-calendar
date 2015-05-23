@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="612.5" y="773.0">Controller</node>
+    <node x="465.73484848484844" y="451.0">View</node>
+    <node x="499.0" y="213.0">JDatePanel</node>
+    <node x="867.0" y="105.0">Model</node>
+    <node x="0.0" y="201.0">RoundedBorder</node>
+    <node x="967.0" y="0.0">LibMysqlConnector</node>
+    <node x="653.5" y="1023.0">Application</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Application" target="Model">
+      <point x="60.33333333333337" y="-27.5" />
+      <point x="804.3333333333334" y="998.0" />
+      <point x="1149.1666666666667" y="998.0" />
+      <point x="1149.1666666666667" y="426.0" />
+      <point x="1212.8333333333335" y="426.0" />
+      <point x="138.33333333333348" y="148.0" />
+    </edge>
+    <edge source="Application" target="Controller">
+      <point x="0.0" y="-27.5" />
+      <point x="0.0" y="100.0" />
+    </edge>
+    <edge source="Application" target="View">
+      <point x="-60.33333333333337" y="-27.5" />
+      <point x="683.6666666666666" y="998.0" />
+      <point x="602.0" y="998.0" />
+      <point x="602.0" y="748.0" />
+      <point x="519.5681818181818" y="748.0" />
+      <point x="-107.66666666666663" y="136.0" />
+    </edge>
+    <edge source="Controller" target="Model">
+      <point x="87.66666666666663" y="-100.0" />
+      <point x="831.6666666666666" y="748.0" />
+      <point x="1138.1666666666667" y="748.0" />
+      <point x="1138.1666666666667" y="426.0" />
+      <point x="1074.5" y="426.0" />
+      <point x="0.0" y="148.0" />
+    </edge>
+    <edge source="View" target="RoundedBorder">
+      <point x="-107.66666666666663" y="-136.0" />
+      <point x="519.5681818181818" y="426.0" />
+      <point x="239.5" y="426.0" />
+      <point x="0.0" y="52.0" />
+    </edge>
+    <edge source="Controller" target="View">
+      <point x="-87.66666666666674" y="-100.0" />
+      <point x="656.3333333333333" y="748.0" />
+      <point x="627.2348484848485" y="748.0" />
+      <point x="0.0" y="136.0" />
+    </edge>
+    <edge source="View" target="Controller">
+      <point x="107.66666666666663" y="136.0" />
+      <point x="734.901515151515" y="748.0" />
+      <point x="744.0" y="748.0" />
+      <point x="0.0" y="-100.0" />
+    </edge>
+    <edge source="View" target="Model">
+      <point x="107.66666666666663" y="-136.0" />
+      <point x="734.901515151515" y="426.0" />
+      <point x="936.1666666666666" y="426.0" />
+      <point x="-138.33333333333337" y="148.0" />
+    </edge>
+    <edge source="Model" target="LibMysqlConnector">
+      <point x="0.0" y="-148.0" />
+      <point x="0.0" y="27.5" />
+    </edge>
+    <edge source="View" target="JDatePanel">
+      <point x="0.0" y="-136.0" />
+      <point x="627.2348484848485" y="426.0" />
+      <point x="673.0" y="426.0" />
+      <point x="0.0" y="40.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="640.5" y="718.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Constructors</Category>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
