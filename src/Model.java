@@ -15,25 +15,26 @@ public class Model {
     }
 
     public ArrayList<String> fetchDatabase(Calendar calendar) {
-        Statement statement = null;
+        PreparedStatement statement = null;
         ResultSet resultSet = null;
-        String query = "SELECT * FROM " + table;
-        query += " WHERE date = \'" + calendarToStr(calendar) + "\'";
+        String query = "SELECT * FROM " + table + " WHERE date = ?";
         ArrayList<String> results = new ArrayList<>();
 
         try {
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(query);
+            statement = connection.prepareStatement(query);
+            statement.setString(1, calendarToStr(calendar));
+            resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 results.add(resultSet.getString("event"));
             }
         }
 
         catch (SQLException exception) {
-            String message = "SQLException: " + exception.getMessage();
-            message += "\nSQLState: " + exception.getSQLState();
-            message += "\nVendorError: " + exception.getErrorCode();
+            String message = "SQL Exception: " + exception.getMessage();
+            message += "\nSQL State: " + exception.getSQLState();
+            message += "\nVendor Error: " + exception.getErrorCode();
             JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
+            System.exit(1);
         }
 
         finally {
@@ -44,6 +45,7 @@ public class Model {
                 catch (SQLException exception) {
                     String message = "Close result set failed.";
                     JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
+                    System.exit(1);
                 }
             }
             if (statement != null) {
@@ -53,6 +55,7 @@ public class Model {
                 catch (SQLException exception) {
                     String message = "Close statement failed.";
                     JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
+                    System.exit(1);
                 }
             }
         }
@@ -61,7 +64,36 @@ public class Model {
     }
 
     public void insertDatabase(String date, String event) {
+        PreparedStatement statement = null;
+        String query = "INSERT INTO " + table + " (event, date) VALUES (?, ?)";
 
+        try {
+            statement = connection.prepareStatement(query);
+            statement.setString(1, event);
+            statement.setString(2, date);
+            statement.executeUpdate();
+        }
+
+        catch (SQLException exception) {
+            String message = "SQL Exception: " + exception.getMessage();
+            message += "\nSQL State: " + exception.getSQLState();
+            message += "\nVendor Error: " + exception.getErrorCode();
+            JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
+            System.exit(1);
+        }
+
+        finally {
+            if (statement != null) {
+                try {
+                    statement.close();
+                }
+                catch (SQLException exception) {
+                    String message = "Close statement failed.";
+                    JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
+                    System.exit(1);
+                }
+            }
+        }
     }
 
     public void updateDatabase(String id, String event) {
@@ -92,7 +124,7 @@ public class Model {
         int[] intDate = new int[3];
         for (int i = 0; i < 3; i++)
             intDate[i] = Integer.parseInt(strDate[i]);
-        return new Calendar.Builder().setDate(intDate[0], intDate[1], intDate[2]).build();
+        return new Calendar.Builder().setDate(intDate[0], intDate[1]-1, intDate[2]).build();
     }
 
 }

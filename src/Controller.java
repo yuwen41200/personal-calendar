@@ -51,19 +51,23 @@ public class Controller extends MouseAdapter implements ActionListener {
             String message = "New event: ";
             String input = JOptionPane.showInputDialog(null, message, "Add Event", JOptionPane.PLAIN_MESSAGE);
 
-            String[] command = event.getActionCommand().split(" ");
-            model.insertDatabase(command[2], input);
-            view.subWindow1(model.strToCalendar(command[2]));
+            if (input != null && !input.equals("")) {
+                String[] commands = event.getActionCommand().split(" ");
+                model.insertDatabase(commands[2], input);
+                view.subWindow1(model.strToCalendar(commands[2]));
+            }
         }
 
         else if (event.getActionCommand().contains("Modify Event")) {
             String message = "Edit event: ";
             String input = JOptionPane.showInputDialog(null, message, "Modify Event", JOptionPane.PLAIN_MESSAGE);
 
-            String[] command = event.getActionCommand().split(" ");
-            String id = model.sequenceDatabase(command[2], command[3]);
-            model.updateDatabase(id, input);
-            view.subWindow1(model.strToCalendar(command[2]));
+            if (input != null && !input.equals("")) {
+                String[] commands = event.getActionCommand().split(" ");
+                String id = model.sequenceDatabase(commands[2], commands[3]);
+                model.updateDatabase(id, input);
+                view.subWindow1(model.strToCalendar(commands[2]));
+            }
         }
 
         else if (event.getActionCommand().contains("Remove Event")) {
@@ -71,10 +75,10 @@ public class Controller extends MouseAdapter implements ActionListener {
             int input = JOptionPane.showConfirmDialog(null, message, "Remove Event", JOptionPane.YES_NO_OPTION);
 
             if (input == JOptionPane.YES_OPTION) {
-                String[] command = event.getActionCommand().split(" ");
-                String id = model.sequenceDatabase(command[2], command[3]);
+                String[] commands = event.getActionCommand().split(" ");
+                String id = model.sequenceDatabase(commands[2], commands[3]);
                 model.deleteDatabase(id);
-                view.subWindow1(model.strToCalendar(command[2]));
+                view.subWindow1(model.strToCalendar(commands[2]));
             }
         }
     }

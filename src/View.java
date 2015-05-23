@@ -30,14 +30,14 @@ public class View {
 
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 7; j++) {
-                String output = "<html>" + (todayMonth+1) + "/" + todayDate + "<br><br>";
+                String output = "<html><b>" + (todayMonth+1) + "/" + todayDate + "</b><br><br>";
                 ArrayList<String> results = model.fetchDatabase(calendar);
                 for (String result : results)
                     output += result + "<br>";
                 output += "</html>";
 
                 dateLabels[i][j] = new JLabel(output);
-                dateLabels[i][j].setFont(new Font(Font.SERIF, Font.BOLD, 16));
+                dateLabels[i][j].setFont(new Font(Font.SERIF, Font.PLAIN, 16));
 
                 datePanels[i][j] = new JDatePanel(new FlowLayout(FlowLayout.LEFT), (Calendar) calendar.clone());
                 datePanels[i][j].setPreferredSize(new Dimension(150, 150));
@@ -90,6 +90,7 @@ public class View {
 
         mainFrame.add(panel);
         mainFrame.pack();
+        mainFrame.setLocationRelativeTo(null);
         mainFrame.setResizable(false);
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         mainFrame.setVisible(true);
@@ -123,7 +124,7 @@ public class View {
             eventButtons2[i].addActionListener(controller);
 
             eventLabels[i] = new JLabel(result);
-            eventLabels[i].setFont(new Font(Font.SERIF, Font.BOLD, 16));
+            eventLabels[i].setFont(new Font(Font.SERIF, Font.PLAIN, 16));
 
             eventPanels[i] = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5));
             eventPanels[i].setBackground(new Color(255, 219, 184));
@@ -156,6 +157,7 @@ public class View {
 
         subFrame1.add(panel);
         subFrame1.pack();
+        subFrame1.setLocationRelativeTo(null);
         subFrame1.setResizable(false);
         subFrame1.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         subFrame1.setVisible(true);

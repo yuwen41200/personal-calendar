@@ -17,6 +17,7 @@ public class LibMysqlConnector {
         catch (FileNotFoundException exception) {
             String message = "Load password file failed.";
             JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
+            System.exit(1);
         }
 
         String jdbcDriver = "com.mysql.jdbc.Driver";
@@ -32,15 +33,16 @@ public class LibMysqlConnector {
         catch (Exception exception) {
             String message = "Load MySQL driver failed.";
             JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
+            System.exit(1);
         }
 
         try {
             connection = DriverManager.getConnection(jdbcUrl);
         }
         catch (SQLException exception) {
-            String message = "SQLException: " + exception.getMessage();
-            message += "\nSQLState: " + exception.getSQLState();
-            message += "\nVendorError: " + exception.getErrorCode();
+            String message = "SQL Exception: " + exception.getMessage();
+            message += "\nSQL State: " + exception.getSQLState();
+            message += "\nVendor Error: " + exception.getErrorCode();
             JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
             System.exit(1);
         }
