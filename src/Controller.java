@@ -64,7 +64,10 @@ public class Controller extends MouseAdapter implements ActionListener {
 
         else if (event.getActionCommand().contains("Modify Event")) {
             String message = "Edit event: ";
-            String input = JOptionPane.showInputDialog(null, message, "Modify Event", JOptionPane.PLAIN_MESSAGE);
+            int index = event.getActionCommand().indexOf("%");
+            String initial = event.getActionCommand().substring(index+1);
+            String input = (String) JOptionPane.showInputDialog
+                    (null, message, "Modify Event", JOptionPane.PLAIN_MESSAGE, null, null, initial);
 
             if (input != null && !input.equals("")) {
                 String[] commands = event.getActionCommand().split(" ");

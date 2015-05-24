@@ -123,7 +123,7 @@ public class View {
 
             eventButtons2[i] = new JButton("<html><b><i>=</i></b></html>");
             eventButtons2[i].setToolTipText("Modify Event");
-            eventButtons2[i].setActionCommand("Modify Event " + date + " " + i);
+            eventButtons2[i].setActionCommand("Modify Event " + date + " " + i + " %" + result);
             eventButtons2[i].addActionListener(controller);
 
             eventLabels[i] = new JLabel(result);
