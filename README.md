@@ -2,7 +2,7 @@
 
 A Project for NCTU Java Programming
 
-##### Getting Started #####
+## Getting Started ##
 
 Install the MySQL driver and add it to your `CLASSPATH`,  
 then execute the following command:
@@ -13,7 +13,7 @@ $ cd out/production/personal-calendar
 $ java Application
 ```
 
-##### Features #####
+## Features ##
 
 + A cross-platform application released under the MIT License.
 + Use Model-View-Controller architectural pattern.
@@ -22,16 +22,16 @@ $ java Application
 + Integrate Google Calendar via Google Calendar API.
 + Use HTML to style Swing components.
 
-##### Screenshots #####
+## Screenshots ##
 
 To be released.
 
-##### Troubleshooting #####
+## Troubleshooting ##
 
 Copy all error messages,  
 and [report the issues][issue-link] on GitHub.
 
-##### Documentation #####
+## Documentation ##
 
 Class Hierarchy:
 
@@ -39,7 +39,7 @@ Class Hierarchy:
 
 To be released.
 
-##### License #####
+## License ##
 
 [The MIT License][license-link]
 
