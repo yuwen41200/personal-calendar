@@ -13,6 +13,7 @@ public class LibMysqlConnector {
             File file = new File("passwd");
             Scanner scanner = new Scanner(file);
             pwd = scanner.nextLine();
+            scanner.close();
         }
         catch (FileNotFoundException exception) {
             String message = "Load password file failed.";
