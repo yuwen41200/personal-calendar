@@ -8,7 +8,8 @@ public class View {
     private Model model;
     private Controller controller;
     private String version;
-    private JFrame mainFrame, subFrame1;
+    private JFrame subFrame1;
+    private JLabel[][] dateLabels;
 
     public void init(Model model, Controller controller, String version) {
         this.model = model;
@@ -17,13 +18,12 @@ public class View {
     }
 
     public void mainWindow(Calendar calendar) {
-        if (mainFrame != null) mainFrame.dispose();
-        mainFrame = new JFrame("Personal Calendar");
+        JFrame mainFrame = new JFrame("Personal Calendar");
         JPanel panel = new JPanel(new BorderLayout(5, 5));
         JPanel leftPanel = new JPanel(new GridLayout(12, 1, 5, 5));
         JPanel rightPanel = new JPanel(new GridLayout(4, 7, 5, 5));
         JDatePanel[][] datePanels = new JDatePanel[4][7];
-        JLabel[][] dateLabels = new JLabel[4][7];
+        dateLabels = new JLabel[4][7];
 
         int todayMonth = calendar.get(Calendar.MONTH);
         int todayDate = calendar.get(Calendar.DAY_OF_MONTH);
@@ -72,8 +72,8 @@ public class View {
 
         JButton button3 = new JButton("<html><b><i>+</i></b></html>");
         button3.setBorder(new RoundedBorder());
-        button3.setToolTipText("Integrate Google Calendar");
-        button3.setActionCommand("Integrate Google Calendar");
+        button3.setToolTipText("Synchronize Google Calendar");
+        button3.setActionCommand("Synchronize Google Calendar");
         button3.addActionListener(controller);
 
         JButton button4 = new JButton("<html><b><i>i</i></b></html>");
@@ -97,6 +97,32 @@ public class View {
         mainFrame.setResizable(false);
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         mainFrame.setVisible(true);
+    }
+
+    public void mainWindowRender(Calendar calendar) {
+        int todayMonth = calendar.get(Calendar.MONTH);
+        int todayDate = calendar.get(Calendar.DAY_OF_MONTH);
+        String todayDay = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.getDefault());
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 7; j++) {
+                String output = "<html><b>" + (todayMonth + 1) + "/" + todayDate;
+                output += " " + todayDay + "</b><br><br>";
+                ArrayList<String> results = model.fetchDatabase(calendar);
+                for (String result : results)
+                    output += result + "<br>";
+                output += "</html>";
+
+                dateLabels[i][j].setText(output);
+
+                calendar.add(Calendar.DATE, 1);
+                todayMonth = calendar.get(Calendar.MONTH);
+                todayDate = calendar.get(Calendar.DAY_OF_MONTH);
+                todayDay = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.getDefault());
+            }
+        }
+
+        calendar.add(Calendar.DATE, -28);
     }
 
     public void subWindow1(Calendar calendar) {
