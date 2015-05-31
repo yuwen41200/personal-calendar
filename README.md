@@ -19,8 +19,9 @@ $ java Application
 + Use Model-View-Controller architectural pattern.
 + Support multiple users.
 + All data are stored in a remote relational database with each independent table for each user.
-+ Integrate Google Calendar via Google Calendar API.
++ Synchronize Google Calendar accounts via Google Calendar API.
 + Use HTML to style Swing components.
++ Database passwords are stored in a stand-alone file.
 
 ## Screenshots ##
 
