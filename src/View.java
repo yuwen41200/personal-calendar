@@ -8,8 +8,9 @@ public class View {
     private Model model;
     private Controller controller;
     private String version;
-    private JFrame subFrame1;
+    private JDatePanel[][] datePanels;
     private JLabel[][] dateLabels;
+    private JFrame subFrame1;
 
     public void init(Model model, Controller controller, String version) {
         this.model = model;
@@ -22,7 +23,7 @@ public class View {
         JPanel panel = new JPanel(new BorderLayout(5, 5));
         JPanel leftPanel = new JPanel(new GridLayout(12, 1, 5, 5));
         JPanel rightPanel = new JPanel(new GridLayout(4, 7, 5, 5));
-        JDatePanel[][] datePanels = new JDatePanel[4][7];
+        datePanels = new JDatePanel[4][7];
         dateLabels = new JLabel[4][7];
 
         int todayMonth = calendar.get(Calendar.MONTH);
@@ -114,6 +115,7 @@ public class View {
                 output += "</html>";
 
                 dateLabels[i][j].setText(output);
+                datePanels[i][j].setCalendar((Calendar) calendar.clone());
 
                 calendar.add(Calendar.DATE, 1);
                 todayMonth = calendar.get(Calendar.MONTH);
@@ -214,6 +216,10 @@ class JDatePanel extends JPanel {
 
     public JDatePanel(LayoutManager layoutManager, Calendar calendar) {
         super(layoutManager);
+        this.calendar = calendar;
+    }
+
+    public void setCalendar(Calendar calendar) {
         this.calendar = calendar;
     }
 
