@@ -9,16 +9,27 @@ then execute the following command:
 
 ```
 $ git clone https://github.com/yuwen41200/personal-calendar.git
-$ cd out/production/personal-calendar
-$ java Application
+$ cd build/libs
+$ java -jar personal-calendar-0.99.jar
+```
+
+Or use Gradle to build,  
+as an alternative:
+
+```
+$ git clone https://github.com/yuwen41200/personal-calendar.git
+$ ./gradlew build
+$ ./gradlew run
 ```
 
 Please note that for security reasons,  
-the following files are not provided:
+the following files are not provided directly:
 
 ```
-src/resources/passwd
-src/resources/client_secret.json
+src/main/resources/client_secret.json
+src/main/resources/passwd
+build/resources/main/client_secret.json
+build/resources/main/passwd
 ```
 
 ## Features ##
