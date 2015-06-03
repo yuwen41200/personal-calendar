@@ -1,4 +1,7 @@
+import com.google.api.client.util.DateTime;
+import com.google.api.services.calendar.model.Event;
 import javax.swing.*;
+import java.io.*;
 import java.sql.*;
 import java.text.*;
 import java.util.*;
@@ -261,7 +264,25 @@ public class Model {
     }
 
     public void fetchGoogleCalendar() {
-
+        List<Event> items = null;
+        try {
+            items = LibGoogleCalendarConnector.getConnection();
+        }
+        catch (IOException exception) {
+            String message = "I/O for Google Calendar failed.";
+            JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
+            System.exit(1);
+        }
+        if (items.size() == 0)
+            System.out.println("No upcoming events found.");
+        else {
+            System.out.println("Upcoming events");
+            for (Event event : items) {
+                DateTime start = event.getStart().getDateTime();
+                start = (start == null) ? event.getStart().getDate() : start;
+                System.out.printf("%s (%s)\n", event.getSummary(), start);
+            }
+        }
     }
 
     public String calendarToStr(Calendar calendar) {

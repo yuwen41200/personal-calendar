@@ -1,5 +1,6 @@
 import java.io.*;
 import javax.swing.*;
+import java.net.*;
 import java.sql.*;
 import java.util.*;
 
@@ -10,12 +11,13 @@ public class LibMysqlConnector {
         String pwd = "";
 
         try {
-            File file = new File("../resources/passwd");
+            URL url = getClass().getResource("../../resources/main/passwd");
+            File file = new File(url.getPath());
             Scanner scanner = new Scanner(file);
             pwd = scanner.nextLine();
             scanner.close();
         }
-        catch (FileNotFoundException exception) {
+        catch (Exception exception) {
             String message = "Load password file failed.";
             JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
             System.exit(1);
