@@ -9,7 +9,7 @@ then execute the following command:
 
 ```
 $ git clone https://github.com/yuwen41200/personal-calendar.git
-$ cd build/libs
+$ cd build/libs/
 $ java -jar personal-calendar-0.99.jar
 ```
 

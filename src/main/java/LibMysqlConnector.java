@@ -10,7 +10,7 @@ public class LibMysqlConnector {
         String pwd = "";
 
         try {
-            File file = new File("resources/passwd");
+            File file = new File("../resources/passwd");
             Scanner scanner = new Scanner(file);
             pwd = scanner.nextLine();
             scanner.close();

@@ -10,12 +10,10 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.CalendarScopes;
-import com.google.api.services.calendar.model.*;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.List;
+import com.google.api.services.calendar.model.Event;
+import com.google.api.services.calendar.model.Events;
+import java.io.*;
+import java.util.*;
 
 public class CalendarQuickstart {
 	/** Application name. */
@@ -38,7 +36,7 @@ public class CalendarQuickstart {
 
 	/** Global instance of the scopes required by this quickstart. */
 	private static final List<String> SCOPES =
-			Arrays.asList(CalendarScopes.CALENDAR_READONLY);
+			Collections.singletonList(CalendarScopes.CALENDAR_READONLY);
 
 	static {
 		try {
