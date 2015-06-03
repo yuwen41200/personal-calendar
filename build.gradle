@@ -1,0 +1,32 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'CalendarQuickstart'
+version = '0.99'
+
+repositories {
+    mavenCentral()
+}
+
+jar {
+    baseName = 'personal-calendar'
+    version = "$version"
+    manifest {
+        attributes 'Main-Class': "$mainClassName"
+    }
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}
+
+dependencies {
+    compile 'com.google.api-client:google-api-client:1.20.0'
+    compile 'com.google.oauth-client:google-oauth-client-jetty:1.20.0'
+    compile 'com.google.apis:google-api-services-calendar:v3-rev125-1.20.0'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
+}

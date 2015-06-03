@@ -1,9 +1,13 @@
-# IntelliJ IDEA Project Files
+# IntelliJ IDEA project files
 .idea/
 *.iml
 
-# Password File
+# Gradle cache files
+.gradle
+build/tmp
+
+# Database password file
 passwd
 
-# Virtual Machine Crash Logs
-hs_err_pid*
+# Google API secret file
+client_secret.json
