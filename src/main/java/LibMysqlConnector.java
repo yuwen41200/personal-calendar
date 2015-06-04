@@ -1,6 +1,5 @@
 import java.io.*;
 import javax.swing.*;
-import java.net.*;
 import java.sql.*;
 import java.util.*;
 
@@ -11,8 +10,7 @@ public class LibMysqlConnector {
         String pwd = "";
 
         try {
-            URL url = getClass().getResource("../../resources/main/passwd");
-            File file = new File(url.getPath());
+            InputStream file = LibMysqlConnector.class.getResourceAsStream("/passwd");
             Scanner scanner = new Scanner(file);
             pwd = scanner.nextLine();
             scanner.close();
