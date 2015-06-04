@@ -4,7 +4,7 @@ A Project for NCTU Java Programming
 
 ## Getting Started ##
 
-Install the MySQL driver and add it to your `CLASSPATH`,  
+Install the Java Runtime Environment,  
 then execute the following command:
 
 ```
