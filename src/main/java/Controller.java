@@ -42,7 +42,6 @@ public class Controller extends MouseAdapter implements ActionListener {
         }
 
         else if (event.getActionCommand().equals("Synchronize Google Calendar")) {
-            model.fetchGoogleCalendar();
             view.subWindow2();
         }
 
@@ -89,6 +88,15 @@ public class Controller extends MouseAdapter implements ActionListener {
                 view.mainWindowRender(calendar);
                 view.subWindow1(model.strToCalendar(commands[2]));
             }
+        }
+
+        else if (event.getActionCommand().contains("Add Google Calendar Event")) {
+            String[] commands = event.getActionCommand().split(" ");
+            int index = event.getActionCommand().indexOf("%");
+            String initial = event.getActionCommand().substring(index+1);
+            model.insertDatabase(commands[4], initial);
+            view.mainWindowRender(calendar);
+            view.subWindow1(model.strToCalendar(commands[4]));
         }
     }
 

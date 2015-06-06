@@ -263,8 +263,10 @@ public class Model {
         return id;
     }
 
-    public void fetchGoogleCalendar() {
+    public ArrayList<String> fetchGoogleCalendar() {
+        ArrayList<String> results = new ArrayList<>();
         List<Event> items = null;
+
         try {
             items = LibGoogleCalendarConnector.getConnection();
         }
@@ -273,16 +275,15 @@ public class Model {
             JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
             System.exit(1);
         }
-        if (items.size() == 0)
-            System.out.println("No upcoming events found.");
-        else {
-            System.out.println("Upcoming events");
+
+        if (items.size() != 0) {
             for (Event event : items) {
                 DateTime start = event.getStart().getDateTime();
                 start = (start == null) ? event.getStart().getDate() : start;
-                System.out.printf("%s (%s)\n", event.getSummary(), start);
+                results.add(start + " %" + event.getSummary());
             }
         }
+        return results;
     }
 
     public String calendarToStr(Calendar calendar) {

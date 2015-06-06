@@ -195,8 +195,48 @@ public class View {
     }
 
     public void subWindow2() {
-        String message = "Load Google Calendar succeeded.";
-        JOptionPane.showMessageDialog(null, message, "Info", JOptionPane.INFORMATION_MESSAGE);
+        JFrame subFrame2 = new JFrame("Synchronize Google Calendar");
+        ArrayList<String> results = model.fetchGoogleCalendar();
+        int resultCount = results.size();
+
+        if (resultCount == 0) {
+            String message = "No upcoming events found.";
+            JOptionPane.showMessageDialog(null, message, "Info", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        JPanel panel = new JPanel(new GridLayout(resultCount, 1, 5, 5));
+        panel.setBorder(new EmptyBorder(5, 5, 5, 5));
+        JPanel[] eventPanels = new JPanel[resultCount];
+        JLabel[] eventLabels = new JLabel[resultCount];
+        JButton[] eventButtons = new JButton[resultCount];
+
+        int i = 0;
+        for (String result : results) {
+            eventButtons[i] = new JButton("<html><b><i>+</i></b></html>");
+            eventButtons[i].setToolTipText("Add Google Calendar Event");
+            eventButtons[i].setActionCommand("Add Google Calendar Event " + result);
+            eventButtons[i].addActionListener(controller);
+
+            eventLabels[i] = new JLabel(result);
+            eventLabels[i].setFont(new Font(Font.SERIF, Font.PLAIN, 16));
+
+            eventPanels[i] = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5));
+            eventPanels[i].setBackground(new Color(255, 219, 184));
+            eventPanels[i].setBorder(new EmptyBorder(5, 5, 5, 5));
+            eventPanels[i].add(eventButtons[i]);
+            eventPanels[i].add(eventLabels[i]);
+
+            panel.add(eventPanels[i]);
+            ++i;
+        }
+
+        subFrame2.add(panel);
+        subFrame2.pack();
+        subFrame2.setLocationRelativeTo(null);
+        subFrame2.setResizable(false);
+        subFrame2.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        subFrame2.setVisible(true);
     }
 
     public void subWindow3() {
