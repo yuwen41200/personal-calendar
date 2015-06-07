@@ -218,7 +218,9 @@ public class View {
             eventButtons[i].setActionCommand("Add Google Calendar Event " + result);
             eventButtons[i].addActionListener(controller);
 
-            eventLabels[i] = new JLabel(result);
+            String output =
+                    result.replaceFirst("-", "/").replaceFirst("-", "/").replaceFirst("%", "");
+            eventLabels[i] = new JLabel(output);
             eventLabels[i].setFont(new Font(Font.SERIF, Font.PLAIN, 16));
 
             eventPanels[i] = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5));
@@ -235,7 +237,7 @@ public class View {
         subFrame2.pack();
         subFrame2.setLocationRelativeTo(null);
         subFrame2.setResizable(false);
-        subFrame2.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        subFrame2.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         subFrame2.setVisible(true);
     }
 

@@ -22,7 +22,8 @@ public class LibMysqlConnector {
         }
 
         String jdbcDriver = "com.mysql.jdbc.Driver";
-        String jdbcUrl = "jdbc:mysql://ckeisc.nctucs.net:3306/personal_calendar";
+        // String jdbcUrl = "jdbc:mysql://ckeisc.nctucs.net:3306/personal_calendar";
+        String jdbcUrl = "jdbc:mysql://localhost:3306/personal_calendar";
         jdbcUrl += "?user=" + usr;
         jdbcUrl += "&password=" + pwd;
         jdbcUrl += "&useUnicode=true&characterEncoding=UTF-8";

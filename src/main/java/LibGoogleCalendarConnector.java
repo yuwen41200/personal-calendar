@@ -20,8 +20,8 @@ import javax.swing.*;
 public class LibGoogleCalendarConnector {
 
     private static final String APPLICATION_NAME = "Personal Calendar";
-    private static final String DATA_STORE_DIR = System.getProperty("user.home") + ".credentials/calendar-api";
-    private static final File DATA_STORE_REF = new java.io.File(DATA_STORE_DIR);
+    private static final String DATA_STORE_DIR = System.getProperty("user.home") + "/.credentials/calendar-api";
+    private static final File DATA_STORE_REF = new File(DATA_STORE_DIR);
     private static FileDataStoreFactory DATA_STORE_FACTORY;
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     private static HttpTransport HTTP_TRANSPORT;
