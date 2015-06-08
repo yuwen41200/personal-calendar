@@ -17,7 +17,7 @@ import java.io.*;
 import java.util.*;
 import javax.swing.*;
 
-public class LibGoogleCalendarConnector {
+public final class LibGoogleCalendarConnector {
 
     private static final String APPLICATION_NAME = "Personal Calendar";
     private static final String DATA_STORE_DIR = System.getProperty("user.home") + "/.credentials/calendar-api";
