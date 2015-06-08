@@ -70,10 +70,10 @@ To be released.
 
 [The MIT License][license-link]
 
-[prtsc-link-0]: https://raw.githubusercontent.com/yuwen41200/personal-calendar/master/doc/screenshot0.png "Main-window"
-[prtsc-link-1]: https://raw.githubusercontent.com/yuwen41200/personal-calendar/master/doc/screenshot1.png "Sub-window1"
-[prtsc-link-2]: https://raw.githubusercontent.com/yuwen41200/personal-calendar/master/doc/screenshot2.png "Sub-window2"
-[prtsc-link-3]: https://raw.githubusercontent.com/yuwen41200/personal-calendar/master/doc/screenshot3.png "Sub-window3"
+[prtsc-link-0]: https://raw.githubusercontent.com/yuwen41200/personal-calendar/master/docs/screenshot0.png "Main-window"
+[prtsc-link-1]: https://raw.githubusercontent.com/yuwen41200/personal-calendar/master/docs/screenshot1.png "Sub-window1"
+[prtsc-link-2]: https://raw.githubusercontent.com/yuwen41200/personal-calendar/master/docs/screenshot2.png "Sub-window2"
+[prtsc-link-3]: https://raw.githubusercontent.com/yuwen41200/personal-calendar/master/docs/screenshot3.png "Sub-window3"
 [issue-link]: https://github.com/yuwen41200/personal-calendar/issues/new
-[diagram-link]: https://raw.githubusercontent.com/yuwen41200/personal-calendar/master/doc/Diagram.png "UML Diagram"
+[diagram-link]: https://raw.githubusercontent.com/yuwen41200/personal-calendar/master/docs/diagram.png "UML Diagram"
 [license-link]: https://raw.githubusercontent.com/yuwen41200/personal-calendar/master/LICENSE
