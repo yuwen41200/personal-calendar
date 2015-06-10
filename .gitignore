@@ -3,8 +3,8 @@
 *.iml
 
 # Gradle cache files
-.gradle
-build/tmp
+.gradle/
+build/tmp/
 
 # Database password file
 passwd
