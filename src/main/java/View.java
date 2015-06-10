@@ -233,8 +233,12 @@ public class View {
             ++i;
         }
 
-        subFrame2.add(panel);
+        JScrollPane scrollPane = new JScrollPane(panel);
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        subFrame2.add(scrollPane);
         subFrame2.pack();
+        subFrame2.setSize(new Dimension(subFrame2.getWidth()+5, 600));
         subFrame2.setLocationRelativeTo(null);
         subFrame2.setResizable(false);
         subFrame2.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);

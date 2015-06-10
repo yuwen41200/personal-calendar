@@ -12,10 +12,13 @@ public class Model {
     private Connection connection;
     private String table;
 
-    public void init(String username) {
+    public void init() {
+        String username = JOptionPane.showInputDialog(null, "User: ", "Starting...", JOptionPane.PLAIN_MESSAGE);
+        if (username == null || username.equals(""))
+            System.exit(0);
+        this.table = "user_" + username;
         LibMysqlConnector libMysqlConnector = new LibMysqlConnector();
         this.connection = libMysqlConnector.getConnection();
-        this.table = "user_" + username;
         createDatabase();
     }
 
