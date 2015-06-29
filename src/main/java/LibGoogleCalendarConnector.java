@@ -42,7 +42,8 @@ public final class LibGoogleCalendarConnector {
 
     /**
      * Creates an authorized Credential object.
-     * @return Credential, @throws IOException
+     * @return a Credential object
+     * @throws IOException an IOException object
      */
     public static Credential authorize() throws IOException {
         InputStream in = LibGoogleCalendarConnector.class.getResourceAsStream("/client_secret.json");
@@ -59,7 +60,8 @@ public final class LibGoogleCalendarConnector {
 
     /**
      * Build and return an authorized Calendar client service.
-     * @return Calendar, @throws IOException
+     * @return a Calendar object
+     * @throws IOException an IOException object
      */
     public static Calendar getCalendarService() throws IOException {
         Credential credential = authorize();
@@ -69,7 +71,8 @@ public final class LibGoogleCalendarConnector {
 
     /**
      * Build a new authorized API client service and receive the event list.
-     * @return List&lt;Event&gt;, @throws IOException
+     * @return a List of Event objects
+     * @throws IOException an IOException object
      */
     public static List<Event> getConnection() throws IOException {
         Calendar service = getCalendarService();

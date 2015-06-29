@@ -64,7 +64,8 @@ Class Hierarchy:
 
 ![UML Diagram][diagram-link]
 
-To be released.
+Document:  
+[Read full documents.][document-link]
 
 ## License ##
 
@@ -76,4 +77,5 @@ To be released.
 [prtsc-link-3]: https://raw.githubusercontent.com/yuwen41200/personal-calendar/master/docs/screenshot3.png "Sub-window3"
 [issue-link]: https://github.com/yuwen41200/personal-calendar/issues/new
 [diagram-link]: https://raw.githubusercontent.com/yuwen41200/personal-calendar/master/docs/diagram.png "UML Diagram"
+[document-link]: https://cdn.rawgit.com/yuwen41200/personal-calendar/master/docs/index.html
 [license-link]: https://raw.githubusercontent.com/yuwen41200/personal-calendar/master/LICENSE

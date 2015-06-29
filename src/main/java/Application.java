@@ -2,6 +2,10 @@ public class Application {
 
     public static final String version = "v0.99";
 
+    /**
+     * Start the application with MVC objects.
+     * @param args optional arguments
+     */
     public static void main(String args[]) {
         Model model = new Model();
         View view = new View();

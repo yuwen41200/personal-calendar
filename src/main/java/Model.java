@@ -12,6 +12,9 @@ public class Model {
     private Connection connection;
     private String table;
 
+    /**
+     * Initialize the Model object.
+     */
     public void init() {
         String username = JOptionPane.showInputDialog(null, "User: ", "Starting...", JOptionPane.PLAIN_MESSAGE);
         if (username == null || username.equals(""))
@@ -22,6 +25,9 @@ public class Model {
         createDatabase();
     }
 
+    /**
+     * Create a new table if the table does not exist.
+     */
     public void createDatabase() {
         if (!Pattern.matches("^[a-zA-Z0-9_]+$", table)) {
             String message = "Invalid username.";
@@ -65,6 +71,11 @@ public class Model {
         }
     }
 
+    /**
+     * Get the events on a specified date.
+     * @param calendar a specified date
+     * @return an ArrayList of String objects representing events
+     */
     public ArrayList<String> fetchDatabase(Calendar calendar) {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -114,6 +125,11 @@ public class Model {
         return results;
     }
 
+    /**
+     * Insert an event into the database.
+     * @param date a String representing a date
+     * @param event a String representing an event
+     */
     public void insertDatabase(String date, String event) {
         PreparedStatement statement = null;
         String query = "INSERT INTO " + table + " (event, date) VALUES (?, ?)";
@@ -147,6 +163,11 @@ public class Model {
         }
     }
 
+    /**
+     * Update an event in the database.
+     * @param id a String representing an event id
+     * @param event a String representing a new event
+     */
     public void updateDatabase(String id, String event) {
         PreparedStatement statement = null;
         String query = "UPDATE " + table + " SET event = ? WHERE id = ? LIMIT 1";
@@ -180,6 +201,10 @@ public class Model {
         }
     }
 
+    /**
+     * Delete an event from the database.
+     * @param id a String representing an event id
+     */
     public void deleteDatabase(String id) {
         PreparedStatement statement = null;
         String query = "DELETE FROM " + table + " WHERE id = ? LIMIT 1";
@@ -212,6 +237,12 @@ public class Model {
         }
     }
 
+    /**
+     * Get the event id of an event.
+     * @param date the date of an event
+     * @param count the n-th event of the date
+     * @return the event id
+     */
     public String sequenceDatabase(String date, String count) {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -266,6 +297,10 @@ public class Model {
         return id;
     }
 
+    /**
+     * Get the events from a Google Calendar account.
+     * @return an ArrayList of String objects representing events
+     */
     public ArrayList<String> fetchGoogleCalendar() {
         ArrayList<String> results = new ArrayList<>();
         List<Event> items = null;
@@ -289,11 +324,21 @@ public class Model {
         return results;
     }
 
+    /**
+     * Convert a Calendar object to its String representation.
+     * @param calendar a Calendar object
+     * @return its String representation
+     */
     public String calendarToStr(Calendar calendar) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return simpleDateFormat.format(calendar.getTime());
     }
 
+    /**
+     * Convert a date represented by String to its Calendar object.
+     * @param date a date represented by String
+     * @return its Calendar object
+     */
     public Calendar strToCalendar(String date) {
         String[] strDate = date.split("-");
         int[] intDate = new int[3];

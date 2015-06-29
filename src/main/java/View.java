@@ -12,12 +12,22 @@ public class View {
     private JLabel[][] dateLabels;
     private JFrame subFrame1;
 
+    /**
+     * Initialize the View object.
+     * @param model a Model object
+     * @param controller a Controller object
+     * @param version a String representing the application version
+     */
     public void init(Model model, Controller controller, String version) {
         this.model = model;
         this.controller = controller;
         this.version = version;
     }
 
+    /**
+     * Show the main-window.
+     * @param calendar a start date
+     */
     public void mainWindow(Calendar calendar) {
         JFrame mainFrame = new JFrame("Personal Calendar");
         JPanel panel = new JPanel(new BorderLayout(5, 5));
@@ -100,6 +110,10 @@ public class View {
         mainFrame.setVisible(true);
     }
 
+    /**
+     * Reload the contents in the main-window.
+     * @param calendar a start date
+     */
     public void mainWindowRender(Calendar calendar) {
         int todayMonth = calendar.get(Calendar.MONTH);
         int todayDate = calendar.get(Calendar.DAY_OF_MONTH);
@@ -127,6 +141,10 @@ public class View {
         calendar.add(Calendar.DATE, -28);
     }
 
+    /**
+     * Show the sub-window1.
+     * @param calendar a specified date
+     */
     public void subWindow1(Calendar calendar) {
         if (subFrame1 != null) subFrame1.dispose();
         subFrame1 = new JFrame("View Daily Schedule");
@@ -194,6 +212,9 @@ public class View {
         subFrame1.setVisible(true);
     }
 
+    /**
+     * Show the sub-window2.
+     */
     public void subWindow2() {
         JFrame subFrame2 = new JFrame("Synchronize Google Calendar");
         ArrayList<String> results = model.fetchGoogleCalendar();
@@ -245,6 +266,9 @@ public class View {
         subFrame2.setVisible(true);
     }
 
+    /**
+     * Show the sub-window3.
+     */
     public void subWindow3() {
         String message = "<html><font size=+2><center>Personal Calendar</center></font>";
         message += "<center>By Yu-wen Pwu, NCTU CS</center>";
@@ -260,15 +284,28 @@ class JDatePanel extends JPanel {
 
     private Calendar calendar;
 
+    /**
+     * Initialize the JDatePanel object.
+     * @param layoutManager the layout for the JDatePanel object
+     * @param calendar the date for the JDatePanel object
+     */
     public JDatePanel(LayoutManager layoutManager, Calendar calendar) {
         super(layoutManager);
         this.calendar = calendar;
     }
 
+    /**
+     * Set the date for the JDatePanel object.
+     * @param calendar a date
+     */
     public void setCalendar(Calendar calendar) {
         this.calendar = calendar;
     }
 
+    /**
+     * Get the date of the JDatePanel object.
+     * @return a date
+     */
     public Calendar getCalendar() {
         return calendar;
     }
@@ -277,16 +314,28 @@ class JDatePanel extends JPanel {
 
 class RoundedBorder implements Border {
 
+    /**
+     * Set up the rounded border.
+     * @see javax.swing.border.Border
+     */
     @Override
     public void paintBorder(Component component, Graphics graphics, int x, int y, int w, int h) {
         graphics.drawRoundRect(x, y, w-1, h-1, 16, 16);
     }
 
+    /**
+     * Set up the rounded border.
+     * @see javax.swing.border.Border
+     */
     @Override
     public Insets getBorderInsets(Component component) {
         return new Insets(17, 17, 18, 16);
     }
 
+    /**
+     * Set up the rounded border.
+     * @see javax.swing.border.Border
+     */
     @Override
     public boolean isBorderOpaque() {
         return true;

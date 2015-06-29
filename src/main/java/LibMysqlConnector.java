@@ -5,6 +5,10 @@ import java.util.*;
 
 public final class LibMysqlConnector {
 
+    /**
+     * Build a MySQL connection.
+     * @return a Connection object
+     */
     public Connection getConnection() {
         String usr = "ywpu";
         String pwd = "";
@@ -22,7 +26,6 @@ public final class LibMysqlConnector {
         }
 
         String jdbcDriver = "com.mysql.jdbc.Driver";
-        // String jdbcUrl = "jdbc:mysql://ckeisc.nctucs.net:3306/personal_calendar";
         String jdbcUrl = "jdbc:mysql://localhost:3306/personal_calendar";
         jdbcUrl += "?user=" + usr;
         jdbcUrl += "&password=" + pwd;

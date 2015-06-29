@@ -8,6 +8,11 @@ public class Controller extends MouseAdapter implements ActionListener {
     private View view;
     private Calendar calendar;
 
+    /**
+     * Initialize the Controller object.
+     * @param model a Model object
+     * @param view a View object
+     */
     public void init(Model model, View view) {
         this.model = model;
         this.view = view;
@@ -17,10 +22,17 @@ public class Controller extends MouseAdapter implements ActionListener {
         calendar.add(Calendar.DATE, displacement);
     }
 
+    /**
+     * Run the application.
+     */
     public void run() {
         view.mainWindow(calendar);
     }
 
+    /**
+     * Actions to be done when the mouse is clicked.
+     * @param event the source of the event
+     */
     @Override
     public void mouseClicked(MouseEvent event) {
         if (event.getSource() instanceof JDatePanel) {
@@ -29,6 +41,10 @@ public class Controller extends MouseAdapter implements ActionListener {
         }
     }
 
+    /**
+     * Actions to be done when a button is clicked.
+     * @param event the source of the event
+     */
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getActionCommand().equals("Move Backward")) {
