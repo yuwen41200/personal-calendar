@@ -3,6 +3,9 @@ import javax.swing.*;
 import java.sql.*;
 import java.util.*;
 
+/**
+ * The connector library for MySQL servers.
+ */
 public final class LibMysqlConnector {
 
     /**

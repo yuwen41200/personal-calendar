@@ -17,14 +17,44 @@ import java.io.*;
 import java.util.*;
 import javax.swing.*;
 
+/**
+ * The connector library for Google Calendar accounts.
+ */
 public final class LibGoogleCalendarConnector {
 
+    /**
+     * The name of the application.
+     */
     private static final String APPLICATION_NAME = "Personal Calendar";
+
+    /**
+     * A String representing the credential directory path.
+     */
     private static final String DATA_STORE_DIR = System.getProperty("user.home") + "/.credentials/calendar-api";
+
+    /**
+     * A File object referencing to the credential directory.
+     */
     private static final File DATA_STORE_REF = new File(DATA_STORE_DIR);
+
+    /**
+     * A FileDataStoreFactory object built from the credential directory reference.
+     */
     private static FileDataStoreFactory DATA_STORE_FACTORY;
+
+    /**
+     * A JsonFactory object.
+     */
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
+
+    /**
+     * A HttpTransport object.
+     */
     private static HttpTransport HTTP_TRANSPORT;
+
+    /**
+     * The scopes of the Google Calendar.
+     */
     private static final List<String> SCOPES = Collections.singletonList(CalendarScopes.CALENDAR_READONLY);
 
     static {
