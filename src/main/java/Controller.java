@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.*;
 
+/**
+ * The Controller class of the MVC structure.
+ */
 public class Controller extends MouseAdapter implements ActionListener {
 
     private Model model;

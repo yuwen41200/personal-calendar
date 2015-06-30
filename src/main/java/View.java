@@ -3,13 +3,39 @@ import javax.swing.border.*;
 import java.awt.*;
 import java.util.*;
 
+/**
+ * The View class of the MVC structure.
+ */
 public class View {
 
+    /**
+     * A Model object.
+     */
     private Model model;
+
+    /**
+     * A Controller object.
+     */
     private Controller controller;
+
+    /**
+     * A String representing the application version.
+     */
     private String version;
+
+    /**
+     * The JDatePanel objects of the main-window.
+     */
     private JDatePanel[][] datePanels;
+
+    /**
+     * The JLabel objects of the main-window.
+     */
     private JLabel[][] dateLabels;
+
+    /**
+     * The JFrame object of the main-window.
+     */
     private JFrame subFrame1;
 
     /**
@@ -280,8 +306,14 @@ public class View {
 
 }
 
+/**
+ * A JPanel with a Calendar object.
+ */
 class JDatePanel extends JPanel {
 
+    /**
+     * The date for the JDatePanel object.
+     */
     private Calendar calendar;
 
     /**
@@ -312,6 +344,9 @@ class JDatePanel extends JPanel {
 
 }
 
+/**
+ * A customized rounded border.
+ */
 class RoundedBorder implements Border {
 
     /**

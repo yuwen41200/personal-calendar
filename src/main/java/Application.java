@@ -1,3 +1,6 @@
+/**
+ * The application entry point.
+ */
 public class Application {
 
     public static final String version = "v0.99";

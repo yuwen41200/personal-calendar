@@ -7,6 +7,9 @@ import java.text.*;
 import java.util.*;
 import java.util.regex.*;
 
+/**
+ * The Model class of the MVC structure.
+ */
 public class Model {
 
     private Connection connection;
