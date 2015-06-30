@@ -12,7 +12,14 @@ import java.util.regex.*;
  */
 public class Model {
 
+    /**
+     * A Connection object, used to connect to a MySQL server.
+     */
     private Connection connection;
+
+    /**
+     * The name of the table, including the prefix.
+     */
     private String table;
 
     /**

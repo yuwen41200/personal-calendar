@@ -3,6 +3,9 @@
  */
 public class Application {
 
+    /**
+     * A String representing the application version.
+     */
     public static final String version = "v0.99";
 
     /**

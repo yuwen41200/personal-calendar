@@ -7,8 +7,19 @@ import java.util.*;
  */
 public class Controller extends MouseAdapter implements ActionListener {
 
+    /**
+     * A Model object.
+     */
     private Model model;
+
+    /**
+     * A View object.
+     */
     private View view;
+
+    /**
+     * A date, used to control the windows in the View object.
+     */
     private Calendar calendar;
 
     /**
