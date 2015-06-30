@@ -42,6 +42,7 @@ build/resources/main/passwd
 + Synchronize Google Calendar accounts via Google Calendar API.
 + Use HTML to style Swing components.
 + Sensitive data are stored in stand-alone files.
++ Use javadoc to generate document files.
 
 ## Screenshots ##
 
@@ -65,7 +66,7 @@ Class Hierarchy:
 ![UML Diagram][diagram-link]
 
 Document:  
-[Read full documents.][document-link]
+[Read full documents][document-link].
 
 ## License ##
 
